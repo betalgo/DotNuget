@@ -59,3 +59,7 @@ runs:
       run: |
         dotnet build -c Release
         dotnet run --project DotNuget.csproj --configuration Release -- ${{ inputs.projectFilePath }} ${{ inputs.packageName }}
+
+branding:
+  icon: 'octagon'
+  color: 'green'
