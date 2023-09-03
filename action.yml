@@ -51,8 +51,6 @@ runs:
   steps:
     - name: Checkout code
       uses: actions/checkout@v2
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '6.0.x'
     - name: Build and run C# program
