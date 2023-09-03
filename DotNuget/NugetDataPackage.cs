@@ -3,7 +3,7 @@ using System.Net;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 
-namespace PublishNuget;
+namespace DotNuget;
 
 public class NugetDataPackage
 {

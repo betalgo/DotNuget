@@ -1,4 +1,4 @@
-﻿using PublishNuget;
+﻿using DotNuget;
 
 var nugetData = new NugetDataPackage(
     Environment.GetEnvironmentVariable("INPUT_PROJECT_FILE_PATH")!,
