@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNuget", "DotNuget\DotNug
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{73B77181-F5B2-4879-87FE-85B7EFE678E3}"
 	ProjectSection(SolutionItems) = preProject
-		Action.yml = Action.yml
+		action.yml = action.yml
 	EndProjectSection
 EndProject
 Global
