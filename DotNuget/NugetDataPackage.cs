@@ -43,7 +43,8 @@ public class NugetDataPackage
 
     public void Validate()
     {
-        
+        //print all fields as json
+        Console.WriteLine(JsonSerializer.Serialize(this));
         if (string.IsNullOrEmpty(ProjectFile) || !File.Exists(ProjectFile))
         {
             PrintErrorAndExit("Project file not found");
@@ -75,6 +76,7 @@ public class NugetDataPackage
     }
     public async Task CheckForUpdate()
     {
+        Validate();
         using var httpClient = new HttpClient();
         var url = $"{NugetSource}/v3-flatcontainer/{PackageName.ToLower()}/index.json";
         var response = await httpClient.GetAsync(url);
