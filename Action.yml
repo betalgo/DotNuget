@@ -1,0 +1,61 @@
+name: 'DotNet NuGet Publish Action'
+description: 'Build, package, and publish a .NET project to a NuGet repository'
+author: 'Betalgo'
+
+inputs:
+  projectFilePath:
+    description: 'Path to the .NET project file'
+    required: true
+  packageName:
+    description: 'Name of the NuGet package'
+    required: false
+  versionFilePath:
+    description: 'File path where the version information is stored'
+    required: false
+  versionRegex:
+    description: 'Regular expression to extract version information'
+    required: false
+  versionStatic:
+    description: 'Static version number to use'
+    required: false
+  tagCommit:
+    description: 'Whether to tag the commit with the version'
+    required: false
+    default: 'false'
+  tagFormat:
+    description: 'The format of the tag'
+    required: false
+  nugetKey:
+    description: 'NuGet API key'
+    required: true
+  nugetSource:
+    description: 'NuGet source URL'
+    required: true
+  includeSymbols:
+    description: 'Whether to include symbols in the NuGet package'
+    required: false
+    default: 'false'
+  noBuild:
+    description: 'Whether to skip the build process'
+    required: false
+    default: 'false'
+  codeSignCertPath:
+    description: 'Path to the code-signing certificate'
+    required: false
+  codeSignCertPassword:
+    description: 'Password for the code-signing certificate'
+    required: false
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '6.0.x'
+    - name: Build and run C# program
+      run: |
+        dotnet build -c Release
+        dotnet run --project DotNuget.csproj --configuration Release -- ${{ inputs.projectFilePath }} ${{ inputs.packageName }}
